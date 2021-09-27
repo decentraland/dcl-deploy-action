@@ -1,5 +1,5 @@
 {
-  "name": "set-rollout-action",
+  "name": "dcl-deploy-action",
   "version": "1.0.0",
   "description": "",
   "main": "dist/index.js",
@@ -7,26 +7,25 @@
     "build": "ncc build index.ts"
   },
   "dependencies": {
-    "@actions/core": "^1.4.0",
+    "@actions/core": "^1.5.0",
     "@actions/github": "^5.0.0",
     "@types/node": "^16.4.13",
-    "@vercel/ncc": "^0.29.0",
-    "typescript": "^4.3.5"
+    "@vercel/ncc": "^0.31.1",
+    "typescript": "^4.4.3"
   },
   "prettier": {
     "printWidth": 120,
     "semi": true
   },
-  "devDependencies": {},
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/decentraland/set-rollout-action.git"
+    "url": "git+https://github.com/decentraland/dcl-deploy-action.git"
   },
   "keywords": [],
   "author": "",
   "license": "Apache-2.0",
   "bugs": {
-    "url": "https://github.com/decentraland/set-rollout-action/issues"
+    "url": "https://github.com/decentraland/dcl-deploy-action/issues"
   },
-  "homepage": "https://github.com/decentraland/set-rollout-action#readme"
+  "homepage": "https://github.com/decentraland/dcl-deploy-action#readme"
 }
