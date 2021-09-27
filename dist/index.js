@@ -6198,8 +6198,6 @@ const core = __importStar(__nccwpck_require__(186));
 const github = __importStar(__nccwpck_require__(438));
 function main() {
     return __awaiter(this, void 0, void 0, function* () {
-        const ref = core.getInput("ref", { required: true });
-        const sha = core.getInput("sha", { required: true });
         const dockerImage = core.getInput("dockerImage", { required: true, trimWhitespace: true });
         const env = core.getInput("env", { required: true, trimWhitespace: true });
         const serviceName = core.getInput("serviceName", { required: true, trimWhitespace: true });
@@ -6211,7 +6209,7 @@ function main() {
         const resp = yield octokit.rest.repos.createDeployment({
             owner,
             repo,
-            ref,
+            ref: github.context.ref,
             environment: env,
             description: `Container deployment`,
             auto_merge: false,
@@ -6219,8 +6217,7 @@ function main() {
             // this task is handled by the webhooks-receiver
             task: "dcl/container-deployment",
             payload: {
-                ref,
-                sha,
+                sha: github.context.sha,
                 serviceName,
                 dockerImage,
                 env,

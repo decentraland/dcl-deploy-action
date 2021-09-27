@@ -3,9 +3,6 @@ import * as github from "@actions/github";
 import { components } from "@octokit/openapi-types";
 
 async function main() {
-  const ref = core.getInput("ref", { required: true });
-  const sha = core.getInput("sha", { required: true });
-
   const dockerImage = core.getInput("dockerImage", { required: true, trimWhitespace: true });
   const env = core.getInput("env", { required: true, trimWhitespace: true });
   const serviceName = core.getInput("serviceName", { required: true, trimWhitespace: true });
@@ -20,7 +17,7 @@ async function main() {
   const resp = await octokit.rest.repos.createDeployment({
     owner,
     repo,
-    ref,
+    ref: github.context.ref,
     environment: env,
     description: `Container deployment`,
     auto_merge: false,
@@ -28,8 +25,7 @@ async function main() {
     // this task is handled by the webhooks-receiver
     task: "dcl/container-deployment",
     payload: {
-      ref,
-      sha,
+      sha: github.context.sha,
       serviceName,
       dockerImage,
       env,
