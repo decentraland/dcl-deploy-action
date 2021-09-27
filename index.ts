@@ -8,7 +8,7 @@ async function main() {
 
   const dockerImage = core.getInput("dockerImage", { required: true, trimWhitespace: true });
   const env = core.getInput("env", { required: true, trimWhitespace: true });
-  const service = core.getInput("service", { required: true, trimWhitespace: true });
+  const serviceName = core.getInput("serviceName", { required: true, trimWhitespace: true });
   const token = core.getInput("token", { required: true });
 
   const octokit = github.getOctokit(token, {
@@ -30,7 +30,7 @@ async function main() {
     payload: {
       ref,
       sha,
-      service,
+      serviceName,
       dockerImage,
       env,
     },
