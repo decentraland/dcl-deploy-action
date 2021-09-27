@@ -1,0 +1,38 @@
+name: 'Deployment with progressive deployment'
+branding:
+  icon: shopping-bag
+  color: green
+description: 'Sends a request to GitHub in order to track deployment'
+inputs:
+  ref:
+    description: 'Branch to be deployed'
+    required: true
+  sha:
+    description: 'Commit sha to be deployed'
+    required: true
+
+  deploymentDomain:
+    description: 'Domain to be deployed'
+    required: true
+  deploymentName:
+    description: 'Name of the deployment'
+    required: true
+
+  packageName:
+    description: 'Name of the NPM package'
+    required: true
+  packageVersion:
+    description: 'Version of the NPM package'
+    required: true
+
+  percentage:
+    description: 'Percentage of users that will receive this rollout'
+    required: true
+
+  token:
+    description: 'GitHub token'
+    required: true
+
+runs:
+  using: 'node12'
+  main: 'dist/index.js'
