@@ -3,8 +3,17 @@ import * as github from "@actions/github";
 import { components } from "@octokit/openapi-types";
 
 async function main() {
+  const envs = core.getInput("env", { required: true, trimWhitespace: true });
+  if (typeof envs != "string") throw new Error("Env must be a string");
+  for (const env of envs.split(/\s+/g)) {
+    await deployEnvironment(env);
+  }
+}
+
+async function deployEnvironment(env: string) {
+  if (!["dev", "stg", "prd", "biz"].includes(env)) throw new Error("Invalid environment=" + env);
+
   const dockerImage = core.getInput("dockerImage", { required: true, trimWhitespace: true });
-  const env = core.getInput("env", { required: true, trimWhitespace: true });
   const serviceName = core.getInput("serviceName", { required: true, trimWhitespace: true });
   const token = core.getInput("token", { required: true });
 
