@@ -9,13 +9,15 @@
   "dependencies": {
     "@actions/core": "^1.5.0",
     "@actions/github": "^5.0.0",
-    "@types/node": "^16.4.13",
-    "@vercel/ncc": "^0.31.1",
-    "typescript": "^4.4.3"
+    "@vercel/ncc": "^0.38.1",
+    "typescript": "^5.4.5"
   },
   "prettier": {
     "printWidth": 120,
     "semi": true
+  },
+  "engines": {
+    "node": "^20.0.0"
   },
   "repository": {
     "type": "git",
@@ -27,5 +29,8 @@
   "bugs": {
     "url": "https://github.com/decentraland/dcl-deploy-action/issues"
   },
-  "homepage": "https://github.com/decentraland/dcl-deploy-action#readme"
+  "homepage": "https://github.com/decentraland/dcl-deploy-action#readme",
+  "devDependencies": {
+    "@types/node": "^20.12.9"
+  }
 }
